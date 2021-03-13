@@ -1,0 +1,17 @@
+{
+    "name": "smartapi-magnus/smartapi-php",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Anam-magnus",
+            "email": "anam@magnusideas.com"
+        }
+    ],
+    "autoload": {
+        "psr-4":{
+             "AngelBroking" : "AngelBroking"
+        }
+       
+    },
+    "require": {}
+}
