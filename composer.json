@@ -1,5 +1,5 @@
 {
-    "name": "smartapi-magnus/smartapi-php",
+    "name": "smartapi-magnus/AngelBroking",
     "type": "library",
     "authors": [
         {
@@ -9,7 +9,7 @@
     ],
     "autoload": {
         "psr-4":{
-             "AngelBroking\" : "AngelBroking"
+             "AngelBroking\\" : "/"
         }
        
     },
