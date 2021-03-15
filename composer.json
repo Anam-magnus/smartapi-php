@@ -1,6 +1,7 @@
 {
     "name": "smartapi-magnus/AngelBroking",
     "type": "library",
+    "License":"MIT"
     "authors": [
         {
             "name": "Anam-magnus",
