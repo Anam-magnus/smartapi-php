@@ -10,11 +10,6 @@ error_reporting(E_ALL);
 class AngelBroking
 {
 	
-	// function __construct(){
-	// 	global $test;
-	// 	echo "string";
-	// }
-
 	public static function GenerateSession()
 	{
 		//get url from config file
@@ -40,7 +35,8 @@ class AngelBroking
 		setcookie('jwtToken', $jwtToken);
 		setcookie('refreshToken', $refreshToken);
 		
-		echo $response_data;
+		//echo $response_data;
+		return $response_data;
 	}
 
 	public static function GenerateToken()
@@ -63,10 +59,11 @@ class AngelBroking
 		else{
 			$response_data['status'] = 'fail';
 			$response_data['error'] = 'The token is invalid';
-			json_encode($response_data);
+			$response_data = json_encode($response_data);
 		}
 		
-		echo $response_data;
+		//echo $response_data;
+		return $response_data;
 	}
 
 	public static function GetProfile()
@@ -92,12 +89,14 @@ class AngelBroking
 			$response_data	=	json_encode($response_data);
 		}
 		
-		echo $response_data;
+		//echo $response_data;
+		return $response_data;
 	}
 
-	public static function LogOut()
+	public static function LogOut($paramArray)
 	{
-		extract($_REQUEST);
+
+		extract($paramArray);
 		
 		$token = self::getToken();
 				
@@ -114,10 +113,10 @@ class AngelBroking
 		else{
 			$response_data['status'] = 'fail';
 			$response_data['error'] = 'The token is invalid';
-			json_encode($response_data);
+			$response_data	=	json_encode($response_data);
 		}
-		
-		echo $response_data;
+		//echo $response_data;
+		return $response_data;
 	}
 
 	public static function GetRMS()
@@ -135,15 +134,16 @@ class AngelBroking
 		else{
 			$response_data['status'] = 'fail';
 			$response_data['error'] = 'The token is invalid';
-			json_encode($response_data);
+			$response_data	=	json_encode($response_data);
 		}
-		echo $response_data;
+		//echo $response_data;
+		return $response_data;
 	}
 	
 
-	public static function PlaceOrder()
+	public static function PlaceOrder($paramArray)
 	{
-		extract($_REQUEST);
+		extract($paramArray);
 		$token 	=	self::getToken();
 		if ($token['status']) {
 			$jwtToken	=	$token['jwtToken'];
@@ -177,17 +177,18 @@ class AngelBroking
 		else{
 			$response_data['status'] = 'fail';
 			$response_data['error'] = 'The token is invalid';
-			json_encode($response_data);
+			$response_data	=	json_encode($response_data);
 		}
 		
-		print_r($response_data);
+		//print_r($response_data);
+		return $response_data;
 	}
 
 
 
-	public static function ModifyOrder()
+	public static function ModifyOrder($paramArray)
 	{
-		extract($_REQUEST);
+		extract($paramArray);
 		$token 	=	self::getToken();
 		if ($token['status']) {
 			$jwtToken	=	$token['jwtToken'];
@@ -218,15 +219,16 @@ class AngelBroking
 		else{
 			$response_data['status'] = 'fail';
 			$response_data['error'] = 'The token is invalid';
-			json_encode($response_data);
+			$response_data	=	json_encode($response_data);
 		}
 		
-		echo $response_data;
+		//echo $response_data;
+		return $response_data;
 	}
 
-	public static function CancelOrder()
+	public static function CancelOrder($paramArray)
 	{
-		extract($_REQUEST);
+		extract($paramArray);
 		$token 	=	self::getToken();
 		if ($token['status']) {
 			$jwtToken	=	$token['jwtToken'];
@@ -242,10 +244,11 @@ class AngelBroking
 		else{
 			$response_data['status'] = 'fail';
 			$response_data['error'] = 'The token is invalid';
-			json_encode($response_data);
+			$response_data	=	json_encode($response_data);
 		}
 		
-		echo $response_data;
+		//echo $response_data;
+		return $response_data;
 	}
 
 	public static function GetOrderBook()
@@ -264,7 +267,8 @@ class AngelBroking
 			$response_data['error'] = 'The token is invalid';
 			$response_data = json_encode($response_data);
 		}
-		echo $response_data;
+		//echo $response_data;
+		return $response_data;
 	}
 
 	public static function GetTradeBook()
@@ -282,15 +286,13 @@ class AngelBroking
 		else{
 			$response_data['status'] = 'fail';
 			$response_data['error'] = 'The token is invalid';
-			json_encode($response_data);
+			$response_data	=	json_encode($response_data);
 		}	
-		echo $response_data;
+		//echo $response_data;
+		return $response_data;
 	}
 
-	// public static function GetLTPData()
-	// {
-
-	// }
+	
 
 	public static function GetHoldings()
 	{
@@ -308,7 +310,8 @@ class AngelBroking
 			$response_data['error'] = 'The token is invalid';
 			$response_data = json_encode($response_data);
 		}
-		echo $response_data;
+		//echo $response_data;
+		return $response_data;
 	} 
 
 	public static function GetPosition()
@@ -327,13 +330,13 @@ class AngelBroking
 			$response_data['error'] = 'The token is invalid';
 			$response_data = json_encode($response_data);
 		}
-		echo $response_data;
-
+		//echo $response_data;
+		return $response_data;
 	}
 
-	public static function ConvertPosition()
+	public static function ConvertPosition($paramArray)
 	{
-		extract($_REQUEST);
+		extract($paramArray);
 
 		//getToken() check whether userlogged in or not and return jwtToken
 		$token = self::getToken();
@@ -366,14 +369,14 @@ class AngelBroking
 			$response_data	=	json_encode($response_data);
 		}
 		
-		echo $response_data;
-		
+		//echo $response_data;
+		return $response_data;
 	}
 
 	/* Create GTT Rule*/
-	public static function CreateRule()
+	public static function CreateRule($paramArray)
 	{
-		extract($_REQUEST);
+		extract($paramArray);
 
 		//getToken() check whether userlogged in or not and return jwtToken
 		$token = self::getToken();
@@ -399,8 +402,6 @@ class AngelBroking
 						            "timeperiod"		=>	intval($timeperiod)
 								);
 			
-			//$api_parameter=array( "tradingsymbol" =>"SBIN-EQ", "symboltoken" =>"3045", "exchange" => "NSE", "producttype" => "MARGIN", "transactiontype" => "BUY", "price" => 100000, "qty" => 10, "disclosedqty"=> 10, "triggerprice" => 200000, "timeperiod" => 365); 
-			
 			// Common function to call smart api
 			$response_data	=	self::CurlOperation($url,$api_parameter, $jwtToken,'POST');
 
@@ -411,14 +412,15 @@ class AngelBroking
 			$response_data	=	json_encode($response_data);
 		}
 		
-		echo $response_data;
+		//echo $response_data;
+		return $response_data;
 	}
 
 
 	/* Modify GTT Rule*/
-	public static function ModifyRule()
+	public static function ModifyRule($paramArray)
 	{
-		extract($_REQUEST);
+		extract($paramArray);
 
 		//getToken() check whether userlogged in or not and return jwtToken
 		$token = self::getToken();
@@ -455,13 +457,14 @@ class AngelBroking
 			$response_data	=	json_encode($response_data);
 		}
 		
-		echo $response_data;
+		//echo $response_data;
+		return $response_data;
 	}
 
 	/* Cancel GTT Rule*/
-	public static function CancelRule()
+	public static function CancelRule($paramArray)
 	{
-		extract($_REQUEST);
+		extract($paramArray);
 
 		//getToken() check whether userlogged in or not and return jwtToken
 		$token = self::getToken();
@@ -489,13 +492,14 @@ class AngelBroking
 			$response_data	=	json_encode($response_data);
 		}
 		
-		echo $response_data;
+		//echo $response_data;
+		return $response_data;
 	}
 
 	/*  GTT Rule Details*/
-	public static function RuleDetails()
+	public static function RuleDetails($paramArray)
 	{
-		extract($_REQUEST);
+		extract($paramArray);
 
 		//getToken() check whether userlogged in or not and return jwtToken
 		$token = self::getToken();
@@ -519,13 +523,14 @@ class AngelBroking
 			$response_data	=	json_encode($response_data);
 		}
 		
-		echo $response_data;
+		//echo $response_data;
+		return $response_data;
 	}
 
 	/*  GTT Rule list*/
-	public static function RuleList()
+	public static function RuleList($paramArray)
 	{
-		extract($_REQUEST);
+		extract($paramArray);
 
 		//getToken() check whether userlogged in or not and return jwtToken
 		$token = self::getToken();
@@ -541,9 +546,7 @@ class AngelBroking
 			$api_parameter	=	array("status"=> $status,
 							     "page"=> $page,
 							     "count"=> $count
-							 );
-
-			
+							 );			
 			
 			// Common function to call smart api
 			$response_data	=	self::CurlOperation($url,$api_parameter, $jwtToken,'POST');
@@ -554,7 +557,8 @@ class AngelBroking
 			$response_data	=	json_encode($response_data);
 		}
 		
-		echo $response_data;
+		//echo $response_data;
+		return $response_data;
 	}
 
 
