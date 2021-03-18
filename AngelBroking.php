@@ -3,13 +3,14 @@
 session_start();
 require_once("includes/AngelConfigrationManage.php");	
 
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 class AngelBroking
 {
-	
+
 	public static function GenerateSession()
 	{
 		//get url from config file
@@ -33,9 +34,8 @@ class AngelBroking
 		$_SESSION['jwtToken']		=	$jwtToken;
 		$_SESSION['refreshToken']	=   $refreshToken;
 		setcookie('jwtToken', $jwtToken);
-		setcookie('refreshToken', $refreshToken);
+		setcookie('refreshToken', $refreshToken);		
 		
-		//echo $response_data;
 		return $response_data;
 	}
 
@@ -682,6 +682,17 @@ class AngelBroking
 		return $message;
 	}
 
+	public static function SocketConnet($client_code="S212741", $feed_token="0985676059",$task="mw", $script="nse_cm|2885&nse_cm|1594&nse_cm|11536")
+	{
+		if (empty($client_code) || empty($feed_token) || empty($task))
+		 	 return "client_code or feed_token or task is missing";
+        if ($task === "mw" || $task === "sfi" || $task === "dp") {
+			require ('includes/socket.php');
+		}
+		else{
+			return "Invalid task provided";
+		}
+	}
 	
 }
 
