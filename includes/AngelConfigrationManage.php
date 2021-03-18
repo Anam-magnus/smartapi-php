@@ -1,4 +1,6 @@
 <?php
+namespace AngelBroking; 
+
 class AngelConfigrationManage
 {
 	public static function AngelConfigrationData()
