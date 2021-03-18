@@ -1,6 +1,6 @@
 
 <label id="lbldata"></label>
-<script src="includes/pako_inflate.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pako/1.0.11/pako_inflate.js"></script>
 <script type="text/javascript">
 
 		var feed_token = '<?= $feed_token ?>';
